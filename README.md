@@ -1,6 +1,8 @@
 # inspection_ui
 
 ## Project setup
+
+npm install -g @vue/cli
 ```
 npm install
 ```
@@ -9,16 +11,10 @@ npm install
 ```
 npm run serve
 ```
+### Vue CLI error
 
-### Compiles and minifies for production
-```
-npm run build
-```
+npm install -g @vue/cli
 
-### Lints and fixes files
-```
-npm run lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

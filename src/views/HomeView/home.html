@@ -1,9 +1,9 @@
 <NavbarView />
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="mb-0">Select an Inspection</h4>
-        <InspectionSearch :searchQuery="searchQuery" @update:searchQuery="val => searchQuery = val" />
-    </div>
+    <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+    <h4 class="mb-0">Select an Inspection</h4>
+    <InspectionSearch :searchQuery="searchQuery" @update:searchQuery="val => searchQuery = val" />
+</div>
 
     <div class="row mb-4 mt-5">
         <template v-if="filteredInspections.length">
@@ -16,7 +16,6 @@
         </div>
     </div>
 
-    <!--  Modal -->
     <div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -54,7 +53,6 @@
                             </div>
                         </div>
 
-                        <!-- Photos -->
                         <div v-if="showPhotos(line)" class="mb-2">
                             <label class="form-label text-xs">
                                 Upload Photos

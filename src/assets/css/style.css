@@ -3,6 +3,7 @@
   --primary-color: #153a62;
   --secondary-color: #f37724;
   --tertiary-color: #275d98;
+  --white:#fff;
 
 }
 
@@ -28,11 +29,11 @@ color: var(--secondary-color) !important;
 }
 
 .bg-blue{
-background: linear-gradient(90.12deg, #153a62 21.27%, #275d98 98.63%);
+background: linear-gradient(90.12deg, var(--primary-color) 21.27%, var(--tertiary-color) 98.63%);
 }
 
 .rounded-5 {
-  border-radius: 12px; /* Rounded corners */
+  border-radius: 12px;
 }
 
 .icon-wrapper {
@@ -53,11 +54,11 @@ background: linear-gradient(90.12deg, #153a62 21.27%, #275d98 98.63%);
 }
 .btn-outline-orange:hover {
   background-color: var(--secondary-color);
-  color: #fff;
+  color: var(--white);
 }
 
 .nav-link.active{
-  color:#fff !important;
+  color:var(--white) !important;
   background-color: var(--secondary-color);
   border-radius:10px ;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
@@ -66,7 +67,7 @@ background: linear-gradient(90.12deg, #153a62 21.27%, #275d98 98.63%);
 
 .nav-link{
 font-size: 13px;
-color: #fff !important;
+color: var(--white) !important;
 }
 
 .text-xs{
