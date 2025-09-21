@@ -1,14 +1,20 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex"
 
-export default createStore({
+const store = createStore({
   state: {
-  },
-  getters: {
+    inspections: JSON.parse(localStorage.getItem("inspections")) || []
   },
   mutations: {
+    addInspection(state, inspection) {
+      state.inspections.push(inspection)
+      localStorage.setItem("inspections", JSON.stringify(state.inspections))
+    }
   },
   actions: {
-  },
-  modules: {
+    addInspection({ commit }, inspection) {
+      commit("addInspection", inspection)
+    }
   }
 })
+
+export default store

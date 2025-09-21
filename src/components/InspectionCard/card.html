@@ -1,0 +1,10 @@
+<div class="col-md-4 mb-3">
+    <div class="card p-3 text-center cursor-pointer shadow-orange rounded-5"
+        :class="{ 'border-orange border-3': selectedInspection === inspection }" data-bs-toggle="modal"
+        data-bs-target="#inspectionModal" @click="$emit('select', inspection)">
+        <div class="icon-wrapper mb-2">
+            <img src="@/assets/images/inspection.png" class="inspection-icon" alt="icon" />
+        </div>
+        <h5 class="text-orange">{{ inspection.name }}</h5>
+    </div>
+</div>

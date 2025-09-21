@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+  --primary-color: #153a62;
+  --secondary-color: #f37724;
+  --tertiary-color: #275d98;
+
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url('@/assets/images/pace_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 10%;
+}
+
+.shadow-orange {
+  box-shadow: 0 4px 6px rgba(243, 119, 36, 0.4), 0 1px 3px rgba(243, 119, 36, 0.3);
+}
+
+.text-orange{
+color: var(--secondary-color) !important;
+}
+
+
+.logo{
+    width:100px;
+}
+
+.bg-blue{
+background: linear-gradient(90.12deg, #153a62 21.27%, #275d98 98.63%);
+}
+
+.rounded-5 {
+  border-radius: 12px; /* Rounded corners */
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inspection-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.btn-outline-orange {
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+.btn-outline-orange:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.nav-link.active{
+  color:#fff !important;
+  background-color: var(--secondary-color);
+  border-radius:10px ;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  font-size: 13px;
+}
+
+.nav-link{
+font-size: 13px;
+color: #fff !important;
+}
+
+.text-xs{
+font-size: 13px;
+}
+
+.text-xxs{
+font-size:10px;
+}
+
+.btn-primary{
+background-color: var(--secondary-color) !important;
+border-color: var(--secondary-color) !important;
+}
+
+.bg-warning-light {
+  background-color: #fff3cd;
+  color: #664d03;
+}

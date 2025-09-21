@@ -1,0 +1,83 @@
+<NavbarView />
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0">Select an Inspection</h4>
+        <InspectionSearch :searchQuery="searchQuery" @update:searchQuery="val => searchQuery = val" />
+    </div>
+
+    <div class="row mb-4 mt-5">
+        <template v-if="filteredInspections.length">
+            <InspectionCard v-for="insp in filteredInspections" :key="insp.name" :inspection="insp"
+                :selectedInspection="selectedInspection" @select="selectInspection" />
+        </template>
+
+        <div v-else class="col-12 text-center text-muted py-5">
+            <p class="mb-0">No inspections found.</p>
+        </div>
+    </div>
+
+    <!--  Modal -->
+    <div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inspectionModalLabel">
+                        {{ inspection?.name }}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div v-for="line in inspection?.lines" :key="line.id" class="card p-1 border-0 text-start">
+                        <h6 class="text-xs fw-bold">{{ line.name }}</h6>
+                        <div v-if="line.condition_label" class="mb-2">
+                            <p class="text-xs">{{ line.condition_label }}</p>
+                            <div v-for="opt in line.condition_options" :key="opt.label" class="form-check">
+                                <input type="radio" class="form-check-input" :id="`${line.id}-${opt.label}`"
+                                    :name="`cond-${line.id}`" :value="opt" v-model="line.condition" />
+                                <label :for="`${line.id}-${opt.label}`" class="form-check-label text-xs">
+                                    {{ opt.label }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div v-if="showNote(line)" class="mb-2">
+                            <label class="form-label text-xs">
+                                Notes
+                                <span v-if="line.is_note_required || line.note_requirement === 'Required'"
+                                    class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control form-control-sm rounded-5 shadow-sm" v-model="line.note"
+                                :class="{ 'is-invalid': errors[line.id]?.includes('Note is required') }"></textarea>
+                            <div v-if="errors[line.id]?.includes('Note is required')" class="invalid-feedback">
+                                Note is required.
+                            </div>
+                        </div>
+
+                        <!-- Photos -->
+                        <div v-if="showPhotos(line)" class="mb-2">
+                            <label class="form-label text-xs">
+                                Upload Photos
+                                <span v-if="line.is_pic_required || line.pic_requirement === 'Required'"
+                                    class="text-danger">*</span>
+                            </label>
+                            <input type="file" class="form-control form-control-sm rounded-5 shadow-sm"
+                                :class="{ 'is-invalid': errors[line.id]?.includes('Photo is required') }"
+                                :multiple="line.num_pics > 1" @change="handleFileUpload($event, line)" />
+                            <div v-if="errors[line.id]?.includes('Photo is required')" class="invalid-feedback">
+                                Photo is required.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm rounded-5 text-xs shadow-sm" @click="submitForm">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
